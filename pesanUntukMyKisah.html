@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk mY Kisah Aku Gueh i'm🤍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f1419 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Efek bintang-bintang */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Container bunga */
+        .flowers-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .flower-plant {
+            position: absolute;
+            bottom: 0;
+        }
+
+        /* Rumput */
+        .grass {
+            position: absolute;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to top, #2d5016, #4a7c2e);
+            border-radius: 3px 3px 0 0;
+            animation: sway 3s ease-in-out infinite;
+        }
+
+        /* Batang bunga */
+        .stem {
+            position: absolute;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to top, #6b8e6b, #8fbc8f);
+            border-radius: 3px;
+            animation: gentleSway 4s ease-in-out infinite;
+        }
+
+        /* Daun */
+        .leaf {
+            position: absolute;
+            width: 28px;
+            height: 15px;
+            background: linear-gradient(135deg, #8fbc8f 0%, #6b8e6b 50%, #4a7c59 100%);
+            border-radius: 0 70% 70% 0;
+            transform-origin: left center;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2), 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .leaf.left {
+            transform: rotate(-35deg);
+            left: -14px;
+        }
+
+        .leaf.right {
+            transform: rotate(35deg) scaleX(-1);
+            right: -14px;
+        }
+
+        .leaf::before {
+            content: '';
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Bunga pink */
+        .flower {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .petal {
+            position: absolute;
+            width: 32px;
+            height: 45px;
+            background: radial-gradient(ellipse at 50% 30%, #ffd4e8 0%, #ffb3d9 30%, #ff8dc7 60%, #ff69b4 100%);
+            border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+            top: 50%;
+            left: 50%;
+            transform-origin: center center;
+            animation: petalFloat 3s ease-in-out infinite;
+            box-shadow: inset 0 -2px 5px rgba(255, 20, 147, 0.3), 0 2px 8px rgba(255, 105, 180, 0.4);
+        }
+
+        .petal:nth-child(1) { 
+            transform: translate(-50%, -50%) rotate(0deg) translateY(-18px); 
+            animation-delay: 0s;
+        }
+        .petal:nth-child(2) { 
+            transform: translate(-50%, -50%) rotate(72deg) translateY(-18px); 
+            animation-delay: 0.2s;
+        }
+        .petal:nth-child(3) { 
+            transform: translate(-50%, -50%) rotate(144deg) translateY(-18px); 
+            animation-delay: 0.4s;
+        }
+        .petal:nth-child(4) { 
+            transform: translate(-50%, -50%) rotate(216deg) translateY(-18px); 
+            animation-delay: 0.6s;
+        }
+        .petal:nth-child(5) { 
+            transform: translate(-50%, -50%) rotate(288deg) translateY(-18px); 
+            animation-delay: 0.8s;
+        }
+
+        .flower-center {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: radial-gradient(circle at 30% 30%, #fff9e6 0%, #ffe4b5 20%, #ffd700 50%, #ffb347 80%, #ff9933 100%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.3), 0 0 10px rgba(255, 215, 0, 0.5);
+            z-index: 10;
+        }
+
+        .flower-center::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.6) 0%, transparent 50%);
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(2deg); }
+            75% { transform: rotate(-2deg); }
+        }
+
+        @keyframes gentleSway {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(3deg); }
+            75% { transform: rotate(-3deg); }
+        }
+
+        @keyframes petalFloat {
+            0%, 100% { 
+                transform: translate(-50%, -50%) rotate(var(--rotation)) translateY(-18px) scale(1); 
+            }
+            50% { 
+                transform: translate(-50%, -50%) rotate(var(--rotation)) translateY(-20px) scale(1.03); 
+            }
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+
+        .open-btn {
+            background: linear-gradient(135deg, #ff69b4, #ff1493, #c71585);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.5), 0 0 20px rgba(255, 105, 180, 0.3);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .open-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.7), 0 0 30px rgba(255, 105, 180, 0.5);
+            background: linear-gradient(135deg, #ff1493, #ff69b4, #ff1493);
+        }
+
+        .open-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .message-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f9 100%);
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 105, 180, 0.3);
+            z-index: 1000;
+            animation: slideUp 0.6s ease-out;
+            border: 2px solid rgba(255, 105, 180, 0.3);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translate(-50%, 100%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .message-box.show {
+            display: block;
+        }
+
+        .message-box h1 {
+            color: #ff1493;
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(255, 20, 147, 0.2);
+        }
+
+        .message-box p {
+            color: #333;
+            font-size: 18px;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        .close-btn {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .close-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .overlay.show {
+            display: block;
+        }
+
+        .heart {
+            color: #ff1493;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .message-box::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .message-box::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .message-box::-webkit-scrollbar-thumb {
+            background: #ff69b4;
+            border-radius: 10px;
+        }
+
+        .message-box::-webkit-scrollbar-thumb:hover {
+            background: #ff1493;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="starsContainer"></div>
+    <div class="flowers-container" id="flowersContainer"></div>
+
+    <div class="main-content">
+        <div class="btn-container">
+            <button class="open-btn" onclick="openMessage()">
+                🤍 Buka Pesanku 🤍
+            </button>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeMessage()"></div>
+
+    <div class="message-box" id="messageBox">
+        <h1>💕 Untuk Kamu, Sayangku 💕</h1>
+        <p>
+            Halo sayangnya aku, pertama kalau kamu tanya kenapa aku bikin web ini, jawabnya yaa pengen ajaa:3 lalu juga aku pengen buatin kamu surat yang anti mainstream HAHAHA
+            lagipun aku pernah janji bikinin kamu ini even ngga sepenuhnya dari otakku sih tapi gapapa aku juga berusaha kok bikinnya hehehe👉👈
+        </p>
+        <p>
+            I wanna say thanks karna kamu sudah mau berjuang sama aku selama kurang lebih 5 bulan yaa kita udah bersama(?) even aku pernah bikin kamu cape, bikin kamu kecewa bikin kamu sedih, bikin kamu sakit hati
+            terimakasih udah selalu kasih kesempatan buat hubungan ini tetap bertahan, semoga selanjutnya kita menjadi pribadi yang lebih baik yaa sayangkuu, menjadi orang yang lebih bisa memaafkan lagi satu sama lain, bisa mengerti satu sama lain hehehe👉👈
+        </p>
+        <p>
+            Aku minta maaf juga karna sometimes aku udah pernah buat kamu kecewa banget, udah buat kamu sedih banget udah buat banyak kesalahan ke kamu tapi kamu masih bisa maafin aku terimakasih banyak yaa sayangg huhuu
+            maafin aku udah jadi pacar yang buruk buat kamu, aku masih berusaha dan belaajr buat jadi pasangan untuk kamu sayangg
+        </p>
+        <p>
+            Ngga kerasa sebentar lagi kita mau masuk 2026, ternyata secepat itu waktu berlalu padahal rasanya kita baru kenal kemarin deh wkwk, pertengahan tahun ini dimulai bareng kamu dan awal tahun besok sampai seterusnya semoga kita masih bersama yaa sayang:3
+            maybe sebentar lagi kita bakal bilang "ngga kerasa sebentar lagi bakal meet" HAHAHAHA semogaaa yaa cayanggkuu:3
+        </p>
+        <p class="heart">
+            Aku mencintaimu seperti panjangnya kuku yang walau dipotong tetap akan tumbuh seperti halnya cintaku padamu. 🤍
+        </p>
+        <p style="text-align: center; font-style: italic; color: #ff69b4;">
+            - Ikky / Baskara -
+        </p>
+        <button class="close-btn" onclick="closeMessage()">Tutup 🤍</button>
+    </div>
+
+    <script>
+        // Membuat bintang-bintang
+        const starsContainer = document.getElementById('starsContainer');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Membuat bunga-bunga dengan batang dan daun
+        const flowersContainer = document.getElementById('flowersContainer');
+        
+        function createFlowerPlant(position, stemHeight) {
+            const plant = document.createElement('div');
+            plant.className = 'flower-plant';
+            plant.style.left = position + '%';
+
+            // Batang
+            const stem = document.createElement('div');
+            stem.className = 'stem';
+            stem.style.height = stemHeight + 'px';
+            stem.style.animationDelay = Math.random() * 2 + 's';
+
+            // Daun kiri
+            const leafLeft = document.createElement('div');
+            leafLeft.className = 'leaf left';
+            leafLeft.style.bottom = (stemHeight * 0.4) + 'px';
+            leafLeft.style.left = '-10px';
+
+            // Daun kanan
+            const leafRight = document.createElement('div');
+            leafRight.className = 'leaf right';
+            leafRight.style.bottom = (stemHeight * 0.6) + 'px';
+            leafRight.style.right = '-10px';
+
+            // Bunga
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.style.animationDelay = Math.random() * 2 + 's';
+
+            for (let i = 0; i < 5; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.style.setProperty('--rotation', (i * 72) + 'deg');
+                flower.appendChild(petal);
+            }
+
+            const center = document.createElement('div');
+            center.className = 'flower-center';
+            flower.appendChild(center);
+
+            stem.appendChild(leafLeft);
+            stem.appendChild(leafRight);
+            stem.appendChild(flower);
+            plant.appendChild(stem);
+
+            return plant;
+        }
+
+        // Membuat beberapa bunga di posisi berbeda
+        const flowerPositions = [10, 15, 25, 30, 40, 45, 55, 60, 70, 75, 85, 90];
+        flowerPositions.forEach(pos => {
+            const height = 120 + Math.random() * 80;
+            flowersContainer.appendChild(createFlowerPlant(pos, height));
+        });
+
+        // Membuat rumput
+        for (let i = 0; i < 50; i++) {
+            const grass = document.createElement('div');
+            grass.className = 'grass';
+            grass.style.left = Math.random() * 100 + '%';
+            grass.style.height = (20 + Math.random() * 30) + 'px';
+            grass.style.animationDelay = Math.random() * 3 + 's';
+            flowersContainer.appendChild(grass);
+        }
+
+        function openMessage() {
+            document.getElementById('overlay').classList.add('show');
+            document.getElementById('messageBox').classList.add('show');
+        }
+
+        function closeMessage() {
+            document.getElementById('overlay').classList.remove('show');
+            document.getElementById('messageBox').classList.remove('show');
+        }
+    </script>
+</body>
+</html>
